@@ -3,7 +3,9 @@ package com.west.forlearn.controller;
 import com.west.forlearn.dao.UserEntity;
 import com.west.forlearn.service.ForlearnService;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
+import java.util.Date;
 
 @RestController
 public class ForlearnController {
@@ -13,7 +15,7 @@ public class ForlearnController {
 
     @RequestMapping(value="/test", method=RequestMethod.GET)
     public String getTest(){
-        return "welcome!!~~";
+        return "welcome!!~~" + (new Date().toString());
     }
 
     @RequestMapping(value="/user", method=RequestMethod.GET)

@@ -1,0 +1,9 @@
+1，编译和运行jar包会依赖jar sdk版本，有时候异常就有这个原因引起；
+
+2，通过下面方式可以选择jdk
+ll /Library/Java/JavaVirtualMachines/
+total 0
+drwxr-xr-x  3 root  wheel  102  3 28 22:51 jdk-10.jdk
+drwxr-xr-x  3 root  wheel  102  8 25  2017 jdk1.8.0_144.jdk
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home
+这样就选择1.8的了

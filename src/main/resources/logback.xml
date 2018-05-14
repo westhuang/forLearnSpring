@@ -5,14 +5,14 @@
         <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
             <encoder>
                 <pattern>%d %p (%file:%line\)- %m%n</pattern>
-                <charset>GBK</charset>
+                <charset>UTF-8</charset>
             </encoder>
         </appender>
-        <appender name="baselog"
-                  class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <appender name="baselog" class="ch.qos.logback.core.rolling.RollingFileAppender">
             <File>/tmp/test.log</File>
             <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
                 <fileNamePattern>/tmp/test.log.%d.%i</fileNamePattern>
+                <MaxHistory>30</MaxHistory>
                 <timeBasedFileNamingAndTriggeringPolicy  class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                     <!-- or whenever the file size reaches 64 MB -->
                     <maxFileSize>64 MB</maxFileSize>
@@ -25,11 +25,8 @@
                 <charset>UTF-8</charset> <!-- 此处设置字符集 -->
             </encoder>
         </appender>
-        <root level="info">
+        <root level="INFO">
             <appender-ref ref="STDOUT" />
             <appender-ref ref="baselog"/>
         </root>
-        <logger name="com.west.forlearn" level="DEBUG">
-            <appender-ref ref="baselog" />
-        </logger>
     </configuration>

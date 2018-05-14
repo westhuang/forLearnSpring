@@ -7,3 +7,8 @@ drwxr-xr-x  3 root  wheel  102  3 28 22:51 jdk-10.jdk
 drwxr-xr-x  3 root  wheel  102  8 25  2017 jdk1.8.0_144.jdk
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home
 这样就选择1.8的了
+
+3，spring中请求、响应、session的处理都是提供了相应的类，每次请求里都自动有，很方便进行处理：
+请求用HttpServletRequest，可以通过它获取头部、cookie、get请求包、post请求包；
+相应用HttpServletResponse，可以用过它设置头部、相应数据、响应码；
+session用HttpSession，初始化实验请求包如HttpServletRequest.getSession()，然后可以设置该会话的session内容和过期时间；

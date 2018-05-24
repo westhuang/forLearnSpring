@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.Table;
 
+// 使用hibernate方式，现在没有，使用的是mybatis
 @Repository
 @Table(name = "simple_user")
 @Qualifier("hibernateRepository")

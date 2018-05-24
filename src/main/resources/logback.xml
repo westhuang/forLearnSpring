@@ -29,4 +29,9 @@
             <appender-ref ref="STDOUT" />
             <appender-ref ref="baselog"/>
         </root>
+
+        <logger name="com.west.forlearn.dao.mapper" level="DEBUG" additivity="false">
+            <appender-ref ref="STDOUT" />
+            <appender-ref ref="baselog"/>
+        </logger>
     </configuration>

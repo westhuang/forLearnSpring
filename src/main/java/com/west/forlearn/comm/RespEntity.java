@@ -1,4 +1,4 @@
-package com.west.forlearn.controller;
+package com.west.forlearn.comm;
 
 // 返回数据统一封装
 public class RespEntity {

@@ -17,17 +17,17 @@ public class ForlearnController {
     @Autowired
     private ForlearnService userService;
 
-    @RequestMapping(value="/user", method=RequestMethod.GET)
+    @RequestMapping(value="/fg/user", method=RequestMethod.GET)
     public UserEntity getUser(@RequestParam(value="name") String name){
         return userService.getUser(name);
     }
 
-    @RequestMapping(value="/user", method=RequestMethod.POST)
+    @RequestMapping(value="/fg/user", method=RequestMethod.POST)
     public UserEntity setUser(UserEntity user){
         return userService.setUser(user);
     }
 
-    @RequestMapping(value="/test", method=RequestMethod.GET)
+    @RequestMapping(value="/fg/test", method=RequestMethod.GET)
     public String getTest(HttpServletRequest httpRequest){
 
         Cookie[] cookies = httpRequest.getCookies();

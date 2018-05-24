@@ -21,7 +21,7 @@ import java.util.Map;
 @RestController
 public class FbLoginController {
 
-    private static Logger logger=LoggerFactory.getLogger(FbLoginController.class);
+    private static Logger logger = LoggerFactory.getLogger(FbLoginController.class);
 
     // 主入口
     @RequestMapping(value="/fg/fg_login", method=RequestMethod.POST)

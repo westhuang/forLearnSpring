@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 @Service
 public class SetUserInfoService {
 
-    private static org.slf4j.Logger logger=LoggerFactory.getLogger(SetUserInfoService.class);
+    private static org.slf4j.Logger logger = LoggerFactory.getLogger(SetUserInfoService.class);
 
     @Autowired
     private UserInfoMapper userInfoMapper;

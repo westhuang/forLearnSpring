@@ -2,6 +2,7 @@ package com.west.forlearn.controller;
 
 import com.west.forlearn.comm.HttpsCall;
 import com.west.forlearn.comm.RespEntity;
+import com.west.forlearn.comm.Tools;
 import com.west.forlearn.service.SetUserInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +26,7 @@ public class FbLoginController {
     private static Logger logger = LoggerFactory.getLogger(FbLoginController.class);
 
     // 主入口
-    @RequestMapping(value="/fg/fg_login", method=RequestMethod.POST)
+    @RequestMapping(value="/fb/fb_login", method=RequestMethod.POST)
     public RespEntity excute(HttpServletRequest httpRequest, HttpServletResponse response) throws Exception{
 
         // 获取入参
@@ -43,7 +45,7 @@ public class FbLoginController {
         Map<String, Object> wxRsp = jsonParser.parseMap(httpRsp);
         if (!wxRsp.containsKey("session_key") || !wxRsp.containsKey("openid")){ // 获取失败
             logger.error("call wx jscode2sesion fail: " + httpRsp);
-             return new RespEntity(19000002, "login fail, u can try again");
+            return new RespEntity(19000002, "login fail, u can try again");
         }
         else {                                                                  // 获取成功
             mapParams.put("sessionKey", wxRsp.get("session_key").toString());
@@ -51,7 +53,7 @@ public class FbLoginController {
         }
 
         // 调service写/更新用户信息表
-        saveUserInfo(mapParams);
+        callSaveUserInfo(mapParams);
 
         // 存session
         saveSession(httpRequest, mapParams);
@@ -69,14 +71,14 @@ public class FbLoginController {
     @Autowired
     private SetUserInfoService userInfoService;
 
-    private void saveUserInfo(HashMap<String, String> mapParams) throws Exception {
+    private void callSaveUserInfo(HashMap<String, String> mapParams) throws Exception {
         userInfoService.excute(mapParams);
     }
 
     // 存session
-    private void saveSession(HttpServletRequest httpRequest, HashMap<String, String> mapParams){
+    private void saveSession(HttpServletRequest httpRequest, HashMap<String, String> mapParams) throws UnsupportedEncodingException {
         HttpSession httpSession = httpRequest.getSession();
-        httpSession.setAttribute(WebSecurityConfig.SESSION_DATA, mapParams.toString());
+        httpSession.setAttribute(WebSecurityConfig.SESSION_DATA, Tools.MapToString(mapParams));
         httpSession.setMaxInactiveInterval(1200);
     }
 }

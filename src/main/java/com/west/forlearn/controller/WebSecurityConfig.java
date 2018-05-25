@@ -32,7 +32,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
         InterceptorRegistration addInterceptor = registry.addInterceptor((HandlerInterceptor) getSecurityInterceptor());
 
         // 排除配置
-        addInterceptor.excludePathPatterns("/fg/fg_login");
+        addInterceptor.excludePathPatterns("/fb/fb_login");
 
         // 拦截配置
         addInterceptor.addPathPatterns("/**");

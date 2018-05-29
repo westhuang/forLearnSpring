@@ -25,7 +25,7 @@ public class FbCreateFamilyController {
 
     // 主入口
     @RequestMapping(value="/fb/fb_create_family", method=RequestMethod.POST)
-    public RespEntity excute(HttpServletRequest httpRequest, HttpServletResponse response) throws UnsupportedEncodingException {
+    public RespEntity excute(HttpServletRequest httpRequest, HttpServletResponse response) throws Exception {
 
         // 获取入参
         HashMap<String, String> mapParams = new HashMap<>();
@@ -37,6 +37,7 @@ public class FbCreateFamilyController {
         String sessionStr = session.getAttribute(WebSecurityConfig.SESSION_DATA).toString();
         Map sessionMap = Tools.StringToMap(sessionStr);
         mapParams.put("create_user", sessionMap.get("openid").toString());
+        mapParams.put("user_remark", sessionMap.get("nickName").toString());
         callCreateFamily(mapParams);
 
         // 返回
@@ -46,7 +47,7 @@ public class FbCreateFamilyController {
     @Autowired
     private CreateFamilyService createFamilyService;
 
-    private void callCreateFamily(HashMap<String, String> mapParams){
+    private void callCreateFamily(final HashMap<String, String> mapParams) throws Exception {
         createFamilyService.excute(mapParams);
     }
 }

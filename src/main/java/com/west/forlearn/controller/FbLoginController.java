@@ -63,7 +63,7 @@ public class FbLoginController {
     }
 
     // 调微信获取微信session_key和openid
-    private String getWxKey(String code){
+    private String getWxKey(final String code){
         return HttpsCall.httpsRequest("https://api.weixin.qq.com/sns/jscode2session", "GET",
                 "appid=wxa1fefc7f8231bb36&secret=85e1638081706d984c1e36f9783faf59&grant_type=authorization_code&js_code="+code);
     }
@@ -71,12 +71,12 @@ public class FbLoginController {
     @Autowired
     private SetUserInfoService userInfoService;
 
-    private void callSaveUserInfo(HashMap<String, String> mapParams) throws Exception {
+    private void callSaveUserInfo(final HashMap<String, String> mapParams) throws Exception {
         userInfoService.excute(mapParams);
     }
 
     // 存session
-    private void saveSession(HttpServletRequest httpRequest, HashMap<String, String> mapParams) throws UnsupportedEncodingException {
+    private void saveSession(HttpServletRequest httpRequest, final HashMap<String, String> mapParams) throws UnsupportedEncodingException {
         HttpSession httpSession = httpRequest.getSession();
         httpSession.setAttribute(WebSecurityConfig.SESSION_DATA, Tools.MapToString(mapParams));
         httpSession.setMaxInactiveInterval(1200);

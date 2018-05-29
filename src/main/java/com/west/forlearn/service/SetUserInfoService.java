@@ -25,7 +25,7 @@ public class SetUserInfoService {
 
     // 主入口
     @Transactional
-    public void excute(Map<String, String> params) throws Exception {
+    public void excute(final Map<String, String> params) throws Exception {
 
         // 查询用户信息是否已经存在
         List<UserInfo> userInfoList = userInfoMapper.queryUserInfoLock(params.get("openid"));

@@ -1,10 +1,7 @@
 package com.west.forlearn.dao.mapper;
 
 import com.west.forlearn.dao.UserEntity;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 public interface UserMapper {
     @Select("SELECT * FROM simple_user WHERE Fbkid=#{id}")

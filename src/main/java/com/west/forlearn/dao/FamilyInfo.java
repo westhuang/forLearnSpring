@@ -4,33 +4,28 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="t_user")
-public class UserInfo implements Serializable {
+@Table(name="t_family")
+public class FamilyInfo implements Serializable {
 
     @Id
-    @Column(name = "Fopenid")
-    private String openid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Ffid")
+    private long fid;
 
     @Column(name = "Fname")
     private String name;
 
-    @Column(name = "Favatar_url")
-    private String avatarUrl;
+    @Column(name = "Fbackurl")
+    private String backurl;
 
-    @Column(name = "Fgender")
-    private  String gender;
+    @Column(name = "Fcreate_user")
+    private String createUser;
 
-    @Column(name = "Fposition")
-    private String position;
+    @Column(name = "Fuser_num")
+    private int userNum;
 
-    @Column(name = "Ffamily_num")
-    private int familyNum;
-
-    @Column(name = "Ffamily_list")
-    private String familyList;
-
-    @Column(name = "Ffirst_fid")
-    private long firstFid;
+    @Column(name = "Fuser_list")
+    private String userList;
 
     @Column(name = "Fstate")
     private int state;
@@ -68,12 +63,12 @@ public class UserInfo implements Serializable {
     @Column(name = "Fstanby8")
     private String standby8;
 
-    public String getOpenid() {
-        return openid;
+    public long getFid() {
+        return fid;
     }
 
-    public void setOpenid(String openid) {
-        this.openid = openid;
+    public void setFid(long fid) {
+        this.fid = fid;
     }
 
     public String getName() {
@@ -84,52 +79,36 @@ public class UserInfo implements Serializable {
         this.name = name;
     }
 
-    public String getAvatarUrl() {
-        return avatarUrl;
+    public String getBackurl() {
+        return backurl;
     }
 
-    public void setAvatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl;
+    public void setBackurl(String backurl) {
+        this.backurl = backurl;
     }
 
-    public String getGender() {
-        return gender;
+    public String getCreateUser() {
+        return createUser;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser;
     }
 
-    public String getPosition() {
-        return position;
+    public int getUserNum() {
+        return userNum;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setUserNum(int userNum) {
+        this.userNum = userNum;
     }
 
-    public int getFamilyNum() {
-        return familyNum;
+    public String getUserList() {
+        return userList;
     }
 
-    public void setFamilyNum(int familyNum) {
-        this.familyNum = familyNum;
-    }
-
-    public String getFamilyList() {
-        return familyList;
-    }
-
-    public void setFamilyList(String familyList) {
-        this.familyList = familyList;
-    }
-
-    public long getFirstFid() {
-        return firstFid;
-    }
-
-    public void setFirstFid(long firstFid) {
-        this.firstFid = firstFid;
+    public void setUserList(String userList) {
+        this.userList = userList;
     }
 
     public int getState() {
@@ -230,15 +209,12 @@ public class UserInfo implements Serializable {
 
     @Override
     public String toString() {
-        return "UserInfo{" +
-                "openid='" + openid + '\'' +
-                ", name='" + name + '\'' +
-                ", avatarUrl='" + avatarUrl + '\'' +
-                ", gender='" + gender + '\'' +
-                ", position='" + position + '\'' +
-                ", familyNum=" + familyNum +
-                ", familyList='" + familyList + '\'' +
-                ", firstFid='" + firstFid + '\'' +
+        return "FamilyInfo{" +
+                "name='" + name + '\'' +
+                ", backurl='" + backurl + '\'' +
+                ", createUser='" + createUser + '\'' +
+                ", userNum=" + userNum +
+                ", userList='" + userList + '\'' +
                 ", state=" + state +
                 '}';
     }
